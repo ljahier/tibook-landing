@@ -48,6 +48,7 @@
           .catch((error) => {
             console.error("Error:", error);
           });
+        document.getElementById("registerbeta").disabled = true;
       };
     </script>
   </head>
@@ -426,7 +427,11 @@
                 />
               </div>
               <div>
-                <button class="btn btn__primary" onclick="sendToAirtable()">
+                <button
+                  class="btn btn__primary"
+                  id="registerbeta"
+                  onclick="sendToAirtable()"
+                >
                   S'inscrire
                 </button>
               </div>
