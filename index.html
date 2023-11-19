@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tibook</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./responsive.css" />
+
+    <script>
+      const sendToAirtable = () => {
+        const user = {
+          name: document.getElementById("user-name").value,
+          email: document.getElementById("user-email").value,
+        };
+
+        fetch("https://api.airtable.com/v0/appCkDhwvhwLHv9MW/users", {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer patQorUCygapBW29J.05fafe1cf184bd2cc1c3c29750e21a488f707380e1cc68fe71f40a9d83d41b8e",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            records: [
+              {
+                fields: {
+                  name: user.name,
+                  email: user.email,
+                },
+              },
+            ],
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      };
+    </script>
+  </head>
+  <body>
+    <!-- Header start -->
+    <header class="header">
+      <div class="header__container flex-space">
+        <a href="#">
+          <img class="header__container--logo" src="./assets/logo.svg" alt="" />
+        </a>
+        <nav class="nav">
+          <ul class="nav__menu">
+            <li>
+              <a class="nav__menu--item" href="#features">Fonctionnalités</a>
+            </li>
+            <li>
+              <a class="nav__menu--item" href="#pricing">Pricing</a>
+            </li>
+            <li>
+              <a class="nav__menu--item" href="#aboutus">Notre équipe</a>
+            </li>
+            <li>
+              <a class="nav__menu--item btn btn__primary" href="#beta-register"
+                >Inscrivez vous maintenant</a
+              >
+            </li>
+          </ul>
+          <div class="mobilenav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+        <nav class="mobile-nav">
+          <ul class="nav__menu">
+            <li>
+              <a class="nav__menu--item" href="#features">Fonctionnalités</a>
+            </li>
+            <li>
+              <a class="nav__menu--item" href="#pricing">Pricing</a>
+            </li>
+            <li>
+              <a class="nav__menu--item" href="#aboutus">Notre équipe</a>
+            </li>
+            <li>
+              <a class="nav__menu--item btn btn__primary" href="#beta-register">
+                Inscrivez vous maintenant</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header end -->
+    <main>
+      <!-- Hero start -->
+      <section>
+        <div class="hero pad-m">
+          <div class="container">
+            <div class="hero-content m-a">
+              <h1
+                class="hero-content__title mb-m"
+                style="color: #ffb030; font-size: 6em"
+              >
+                Tibook
+              </h1>
+              <p
+                class="hero-content__paragraph m-a mb-l"
+                style="color: #81b4b3; font-weight: 800; font-size: 2em"
+              >
+                Reconnectons-nous à la lecture de nos enfants
+              </p>
+              <div class="hero-cta">
+                <a href="#beta-register" class="btn btn__primary"
+                  >Inscrivez vous maintenant</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-screen">
+          <div class="hero-screen__bg">
+            <img src="./assets/hero_bg_desktop.svg" alt="" />
+          </div>
+          <div class="hero-screen__image m-a">
+            <img src="assets/familly-reading.png" alt="" />
+          </div>
+        </div>
+      </section>
+      <!-- Hero end -->
+      <!-- Features start -->
+      <section id="features" class="pad-l">
+        <div class="container m-a">
+          <div class="features-content m-a text-center mb-l">
+            <h2 class="section-title mb-m">Plus de lecture moins d'écrans !</h2>
+            <p class="section-paragraph">
+              Vous souhaitez que votre ado lise plus ou lise mieux ? <br />
+              Et si une application était la solution ? Grâce à Tibook, remettez
+              le livre au coeur de votre vie de famille !
+            </p>
+          </div>
+          <div class="features-list">
+            <div class="feature-item">
+              <div class="feature-item__icon">
+                <img src="assets/rocket.png" width="100px" alt="" />
+              </div>
+              <span class="feature-item__title">Motivez votre enfant</span>
+              <p class="feature-item__paragraph">
+                Tibook vous permet de pousser votre enfant à lire des livres
+                grâce à des challenges et des défis.
+              </p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-item__icon">
+                <img src="assets/sweet-heart.png" width="100px" alt="" />
+              </div>
+              <span class="feature-item__title">Créez du lien</span>
+              <p class="feature-item__paragraph">
+                Vous pourrez également créer du lien et rentrer dans l'univers
+                de votre enfant, qui pourrait lui aussi vous lancer des défis à
+                son tour...
+              </p>
+            </div>
+            <div class="feature-item">
+              <div class="feature-item__icon">
+                <img src="assets/cherry-cake.png" width="100px" alt="" />
+              </div>
+              <span class="feature-item__title">Partagez vos résultats</span>
+              <p class="feature-item__paragraph">
+                Cerise sur le gâteau : partagez vos résultats et vos scores à
+                d'autres tribus de votre communauté.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features end -->
+      <!-- Testimonials start -->
+      <!-- <section id="testimonials" class="pad-l">
+        <div class="container">
+          <div class="text-center mb-l">
+            <h2 class="section-title">Hear from our clients</h2>
+          </div>
+          <div class="testimonials-list">
+            <div class="testimonial-item">
+              <div class="testimonial-item__avatar">
+                <img src="./assets/pic3.jpg" alt="" />
+              </div>
+              <span class="testimonial-item__name">Marya Halin</span>
+              <div class="testimonial-item__text">
+                <img src="./assets/quote.svg" alt="" />
+                <blockquote>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Eleifend donec pretium vulputate sapien. Quisque egestas diam
+                  in arcu cursus euismod quis.
+                </blockquote>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <div class="testimonial-item__avatar">
+                <img src="./assets/pic1.jpg" alt="" />
+              </div>
+              <span class="testimonial-item__name">James Blackwell </span>
+              <div class="testimonial-item__text">
+                <img src="./assets/quote.svg" alt="" />
+                <blockquote>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Eleifend donec pretium vulputate sapien. Quisque egestas diam
+                  in arcu cursus euismod quis.
+                </blockquote>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <div class="testimonial-item__avatar">
+                <img src="./assets/pic2.jpg" alt="" />
+              </div>
+              <span class="testimonial-item__name">Walter meller</span>
+              <div class="testimonial-item__text">
+                <img src="./assets/quote.svg" alt="" />
+                <blockquote>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Eleifend donec pretium vulputate sapien. Quisque egestas diam
+                  in arcu cursus euismod quis.
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- Testimonials end -->
+      <!-- Pricing start-->
+      <section id="pricing" class="pad-l">
+        <div class="container">
+          <div class="pricing-content text-center">
+            <h2 class="section-title mb-m">Pricing</h2>
+            <p class="section-paragraph">À chaque besoin son tarif</p>
+          </div>
+          <div class="plans-list">
+            <div class="plan-item">
+              <h3 class="plan-item__title text-center">Free</h3>
+              <div class="plan-item__price text-center">
+                <span class="plan-item__price--value">
+                  <span class="number">0</span>
+                  <small>€</small>
+                  <span>/mois</span>
+                </span>
+              </div>
+              <ul class="plan-item__features">
+                <li class="plan-item__features--item">
+                  <ion-icon name="checkmark-outline"></ion-icon>
+                  <span>Accès aux statistiques de lecture de vos enfants</span>
+                </li>
+                <li class="plan-item__features--item">
+                  <ion-icon name="checkmark-outline"></ion-icon>
+                  <span>Jusqu'à 100 livres recommandés</span>
+                </li>
+              </ul>
+              <div class="plan-item__action">
+                <a href="#beta-register" class="btn btn__primary"
+                  >S'inscrire maintenant</a
+                >
+              </div>
+            </div>
+            <div class="plan-item">
+              <h3 class="plan-item__title text-center">Mensuel</h3>
+              <div class="plan-item__price text-center">
+                <span class="plan-item__price--value">
+                  <span class="number">8,90</span>
+                  <small>€</small>
+                  <span>/mois</span>
+                </span>
+              </div>
+              <ul class="plan-item__features">
+                <li class="plan-item__features--item">
+                  <ion-icon name="checkmark-outline"></ion-icon>
+                  <span>Challenges familiaux</span>
+                </li>
+                <li class="plan-item__features--item">
+                  <ion-icon name="checkmark-outline"></ion-icon>
+                  <span>Aucune limite pour les recommendations de livres</span>
+                </li>
+                <li class="plan-item__features--item">
+                  <ion-icon name="checkmark-outline"></ion-icon>
+                  <span>Partagez vos resultats avec la communauté</span>
+                </li>
+              </ul>
+              <div class="plan-item__action">
+                <a href="#beta-register" class="btn btn__primary"
+                  >S'inscrire maintenant</a
+                >
+              </div>
+            </div>
+            <div class="plan-item">
+              <h3 class="plan-item__title text-center">Annuel</h3>
+              <div class="plan-item__price text-center">
+                <span class="plan-item__price--value">
+                  <span class="number">79,90</span>
+                  <small>€</small>
+                  <span>/an</span>
+                </span>
+              </div>
+              <ul class="plan-item__features">
+                <li class="plan-item__features--item">
+                  <ion-icon name="checkmark-outline"></ion-icon>
+                  <span
+                    >Faites des éconnomies avec la formule annuelle : 3 mois
+                    gratuits</span
+                  >
+                </li>
+              </ul>
+              <div class="plan-item__action">
+                <a href="#beta-register" class="btn btn__primary"
+                  >S'inscrire maintenant</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="aboutus">
+        <div style="text-align: center">
+          <h2 class="section-title mb-m">Notre équipe de choc</h2>
+          <p class="section-paragraph mb-m">
+            Jeune startup Nantaise, composée de 4 Dev, 2 Marketeuses, 2 BizDev
+          </p>
+          <img src="assets/team.jpg" alt="" />
+        </div>
+      </section>
+      <!-- Pricing end-->
+      <!-- Faq start -->
+      <!-- <section id="faq" class="pad-l">
+        <div class="container">
+          <h2 class="section-title text-center mb-l">
+            Frequently Asked Questions
+          </h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <h3 class="faq-item__title">
+                What is the difference between 32-bit and 64-bit versions of
+                Windows?
+              </h3>
+              <p class="faq-item__paragraph">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Obcaecati, non debitis alias assumenda inventore consectetur
+                minus molestiae iste illo, sit nihil quo similique. Veniam
+                doloribus quaerat tenetur, eligendi sit laudantium!
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3 class="faq-item__title">
+                How do i find my Windows product key?
+              </h3>
+              <p class="faq-item__paragraph">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Obcaecati, non debitis alias assumenda inventore consectetur
+                minus molestiae iste illo, sit nihil quo similique. Veniam
+                doloribus quaerat tenetur, eligendi sit laudantium!
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3 class="faq-item__title">
+                Is there a discount for the yearly plan?
+              </h3>
+              <p class="faq-item__paragraph">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Obcaecati, non debitis alias assumenda inventore consectetur
+                minus molestiae iste illo, sit nihil quo similique. Veniam
+                doloribus quaerat tenetur, eligendi sit laudantium!
+              </p>
+            </div>
+            <div class="faq-item">
+              <h3 class="faq-item__title">
+                How do i tell if my computer can run a 64-bit version of
+                Windows?
+              </h3>
+              <p class="faq-item__paragraph">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Obcaecati, non debitis alias assumenda inventore consectetur
+                minus molestiae iste illo, sit nihil quo similique. Veniam
+                doloribus quaerat tenetur, eligendi sit laudantium!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section> -->
+      <!-- Faq end -->
+      <section id="beta-register" class="pad-l beta-register">
+        <div class="container">
+          <div class="beta-register-content">
+            <h2 class="beta-register-content__title">
+              Incrivez-vous gratuitement pour accéder à notre Béta privée !
+            </h2>
+            <form class="beta-register-content__form">
+              <input
+                class="input"
+                id="user-name"
+                type="text"
+                placeholder="Entrez votre nom"
+              />
+              <input
+                class="input"
+                id="user-email"
+                type="text"
+                placeholder="Entrez votre adresse email..."
+              />
+              <button class="btn btn__primary" onclick="sendToAirtable()">
+                S'inscrire
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer start -->
+    <footer id="footer" class="pad-m">
+      <div class="container">
+        <div class="footer-content mb-l">
+          <div class="footer-info">
+            <a href="#" class="footer-info__logo">
+              <img src="./assets/logo-footer.svg" alt="" />
+            </a>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
+              minima vel excepturi fugit cumque autem repudiandae veritatis ex
+              provident qui consequuntur molestias. Et similique excepturi
+              accusamus at in quis eum?
+            </p>
+          </div>
+          <div class="footer-links">
+            <div class="links">
+              <span>Product</span>
+              <ul>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Customers</a></li>
+                <li><a href="#">Contact Sales</a></li>
+              </ul>
+            </div>
+            <div class="links">
+              <span>Product</span>
+              <ul>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Customers</a></li>
+                <li><a href="#">Contact Sales</a></li>
+              </ul>
+            </div>
+            <div class="links">
+              <span>Product</span>
+              <ul>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Customers</a></li>
+                <li><a href="#">Contact Sales</a></li>
+              </ul>
+            </div>
+            <div class="links">
+              <span>Product</span>
+              <ul>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Customers</a></li>
+                <li><a href="#">Contact Sales</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-bottom__copyright">Copyright © 2023 Tibook.</p>
+          <ul class="footer-bottom__social">
+            <li>
+              <a class="footer-bottom__social--item" href="#">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a class="footer-bottom__social--item" href="#">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a class="footer-bottom__social--item" href="#">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer end -->
+  </body>
+
+  <script src="./app.js"></script>
+
+  <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+</html>
